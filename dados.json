@@ -1,0 +1,418 @@
+{
+  "abril": {
+    "label": "Abril 2026",
+    "available": true,
+    "totalConcluidos": 1903,
+    "tarefas": 1418,
+    "prazos": 415,
+    "dPlus": 0,
+    "etapas": 0,
+    "d0": 84,
+    "dm1": 48,
+    "dm2": 143,
+    "dm3": 140,
+    "dp": 0,
+    "pctPrazo": "100,0%",
+    "pctTarefas": "74,5%",
+    "areaTrabalhista": 174,
+    "areaCivel": 198,
+    "areaTributario": 43,
+    "sjAdv": {
+      "total": 1,
+      "civel": 0,
+      "trabalhista": 1,
+      "tributario": 0
+    },
+    "sjEst": {
+      "total": 8,
+      "civel": 4,
+      "trabalhista": 4,
+      "tributario": 0
+    },
+    "profData": [
+      {
+        "name": "Annelise Cavalcante de Almeida",
+        "cargo": "Advogado",
+        "total": 43,
+        "d0": 4,
+        "dm1": 0,
+        "dm2": 4,
+        "dm3": 35,
+        "dp": 0
+      },
+      {
+        "name": "Beatriz Lourenço Berniz ",
+        "cargo": "Advogado",
+        "total": 16,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 10,
+        "dm3": 6,
+        "dp": 0
+      },
+      {
+        "name": "Carolina Caetano Amaral Santos",
+        "cargo": "Estagiário",
+        "total": 49,
+        "d0": 14,
+        "dm1": 11,
+        "dm2": 16,
+        "dm3": 8,
+        "dp": 0
+      },
+      {
+        "name": "Claudy Malzone de Godoy Penteado",
+        "cargo": "Advogado",
+        "total": 19,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 7,
+        "dm3": 12,
+        "dp": 0
+      },
+      {
+        "name": "Danilo Henrique Silva",
+        "cargo": "Estagiário",
+        "total": 17,
+        "d0": 2,
+        "dm1": 2,
+        "dm2": 11,
+        "dm3": 2,
+        "dp": 0
+      },
+      {
+        "name": "Denis Ranieri",
+        "cargo": "Advogado",
+        "total": 8,
+        "d0": 1,
+        "dm1": 0,
+        "dm2": 1,
+        "dm3": 6,
+        "dp": 0
+      },
+      {
+        "name": "Eugenio Romita Filho",
+        "cargo": "Advogado",
+        "total": 33,
+        "d0": 12,
+        "dm1": 4,
+        "dm2": 13,
+        "dm3": 4,
+        "dp": 0
+      },
+      {
+        "name": "Fernanda Machado Melendez",
+        "cargo": "Advogado",
+        "total": 16,
+        "d0": 1,
+        "dm1": 0,
+        "dm2": 6,
+        "dm3": 9,
+        "dp": 0
+      },
+      {
+        "name": "Gabriel Henrique Santoro ",
+        "cargo": "Coordenador",
+        "total": 1,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 0,
+        "dm3": 1,
+        "dp": 0
+      },
+      {
+        "name": "Ingrid Toledo de Oliveira",
+        "cargo": "Estagiário",
+        "total": 15,
+        "d0": 3,
+        "dm1": 1,
+        "dm2": 3,
+        "dm3": 8,
+        "dp": 0
+      },
+      {
+        "name": "João Lucas Silva Barbosa",
+        "cargo": "Advogado",
+        "total": 64,
+        "d0": 26,
+        "dm1": 15,
+        "dm2": 19,
+        "dm3": 4,
+        "dp": 0
+      },
+      {
+        "name": "Luiz Eduardo de Souza Neves Schemy",
+        "cargo": "Coordenador",
+        "total": 1,
+        "d0": 1,
+        "dm1": 0,
+        "dm2": 0,
+        "dm3": 0,
+        "dp": 0
+      },
+      {
+        "name": "Nicoly Nascimento Jorge",
+        "cargo": "Advogado",
+        "total": 16,
+        "d0": 2,
+        "dm1": 0,
+        "dm2": 8,
+        "dm3": 6,
+        "dp": 0
+      },
+      {
+        "name": "Pedro Henrique Almeida Conceição",
+        "cargo": "Estagiário",
+        "total": 62,
+        "d0": 16,
+        "dm1": 9,
+        "dm2": 20,
+        "dm3": 17,
+        "dp": 0
+      },
+      {
+        "name": "Rafael Manta de Brito",
+        "cargo": "Advogado",
+        "total": 27,
+        "d0": 2,
+        "dm1": 6,
+        "dm2": 18,
+        "dm3": 1,
+        "dp": 0
+      },
+      {
+        "name": "Ricardo Alexandre Politi",
+        "cargo": "Coordenador",
+        "total": 5,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 4,
+        "dm3": 1,
+        "dp": 0
+      },
+      {
+        "name": "Samuel Magalhães SIlva de Almeida",
+        "cargo": "Estagiário",
+        "total": 6,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 1,
+        "dm3": 5,
+        "dp": 0
+      },
+      {
+        "name": "Victor Hugo Rocha Macedo",
+        "cargo": "Advogado",
+        "total": 17,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 2,
+        "dm3": 15,
+        "dp": 0
+      }
+    ]
+  },
+  "marco": {
+    "label": "Março 2026",
+    "available": true,
+    "totalConcluidos": 2212,
+    "tarefas": 1581,
+    "prazos": 568,
+    "dPlus": 1,
+    "etapas": 0,
+    "d0": 111,
+    "dm1": 59,
+    "dm2": 209,
+    "dm3": 188,
+    "dp": 1,
+    "pctPrazo": "99,8%",
+    "pctTarefas": "71,5%",
+    "areaTrabalhista": 254,
+    "areaCivel": 246,
+    "areaTributario": 68,
+    "sjAdv": {
+      "total": 17,
+      "civel": 0,
+      "trabalhista": 17,
+      "tributario": 0
+    },
+    "sjEst": {
+      "total": 3,
+      "civel": 0,
+      "trabalhista": 3,
+      "tributario": 0
+    },
+    "profData": [
+      {
+        "name": "Annelise Cavalcante de Almeida",
+        "cargo": "Advogado",
+        "total": 60,
+        "d0": 5,
+        "dm1": 1,
+        "dm2": 16,
+        "dm3": 38,
+        "dp": 0
+      },
+      {
+        "name": "Beatriz Lourenço Berniz ",
+        "cargo": "Advogado",
+        "total": 36,
+        "d0": 0,
+        "dm1": 3,
+        "dm2": 17,
+        "dm3": 16,
+        "dp": 0
+      },
+      {
+        "name": "Carolina Caetano Amaral Santos",
+        "cargo": "Estagiário",
+        "total": 75,
+        "d0": 27,
+        "dm1": 13,
+        "dm2": 35,
+        "dm3": 0,
+        "dp": 0
+      },
+      {
+        "name": "Claudy Malzone de Godoy Penteado",
+        "cargo": "Advogado",
+        "total": 31,
+        "d0": 1,
+        "dm1": 0,
+        "dm2": 6,
+        "dm3": 24,
+        "dp": 0
+      },
+      {
+        "name": "Danilo Henrique Silva",
+        "cargo": "Estagiário",
+        "total": 7,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 4,
+        "dm3": 3,
+        "dp": 0
+      },
+      {
+        "name": "Denis Ranieri",
+        "cargo": "Advogado",
+        "total": 6,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 1,
+        "dm3": 5,
+        "dp": 0
+      },
+      {
+        "name": "Eugenio Romita Filho",
+        "cargo": "Advogado",
+        "total": 52,
+        "d0": 11,
+        "dm1": 21,
+        "dm2": 15,
+        "dm3": 4,
+        "dp": 1
+      },
+      {
+        "name": "Fernanda Machado Melendez",
+        "cargo": "Advogado",
+        "total": 11,
+        "d0": 3,
+        "dm1": 1,
+        "dm2": 2,
+        "dm3": 5,
+        "dp": 0
+      },
+      {
+        "name": "Ingrid Toledo de Oliveira",
+        "cargo": "Estagiário",
+        "total": 34,
+        "d0": 5,
+        "dm1": 1,
+        "dm2": 9,
+        "dm3": 19,
+        "dp": 0
+      },
+      {
+        "name": "João Lucas Silva Barbosa",
+        "cargo": "Advogado",
+        "total": 86,
+        "d0": 33,
+        "dm1": 11,
+        "dm2": 26,
+        "dm3": 16,
+        "dp": 0
+      },
+      {
+        "name": "Luiz Eduardo de Souza Neves Schemy",
+        "cargo": "Coordenador",
+        "total": 2,
+        "d0": 2,
+        "dm1": 0,
+        "dm2": 0,
+        "dm3": 0,
+        "dp": 0
+      },
+      {
+        "name": "Nicoly Nascimento Jorge",
+        "cargo": "Advogado",
+        "total": 20,
+        "d0": 0,
+        "dm1": 1,
+        "dm2": 7,
+        "dm3": 12,
+        "dp": 0
+      },
+      {
+        "name": "Pedro Henrique Almeida Conceição",
+        "cargo": "Estagiário",
+        "total": 66,
+        "d0": 13,
+        "dm1": 4,
+        "dm2": 29,
+        "dm3": 20,
+        "dp": 0
+      },
+      {
+        "name": "Rafael Manta de Brito",
+        "cargo": "Advogado",
+        "total": 41,
+        "d0": 8,
+        "dm1": 2,
+        "dm2": 24,
+        "dm3": 7,
+        "dp": 0
+      },
+      {
+        "name": "Ricardo Alexandre Politi",
+        "cargo": "Coordenador",
+        "total": 6,
+        "d0": 2,
+        "dm1": 1,
+        "dm2": 3,
+        "dm3": 0,
+        "dp": 0
+      },
+      {
+        "name": "Samuel Magalhães SIlva de Almeida",
+        "cargo": "Estagiário",
+        "total": 4,
+        "d0": 0,
+        "dm1": 0,
+        "dm2": 2,
+        "dm3": 2,
+        "dp": 0
+      },
+      {
+        "name": "Victor Hugo Rocha Macedo",
+        "cargo": "Advogado",
+        "total": 31,
+        "d0": 1,
+        "dm1": 0,
+        "dm2": 13,
+        "dm3": 17,
+        "dp": 0
+      }
+    ]
+  }
+}
