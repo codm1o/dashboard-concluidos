@@ -19,14 +19,14 @@
     "areaTributario": 43,
     "sjAdv": {
       "total": 1,
-      "civel": 0,
-      "trabalhista": 1,
+      "civel": 1,
+      "trabalhista": 0,
       "tributario": 0
     },
     "sjEst": {
-      "total": 8,
-      "civel": 4,
-      "trabalhista": 4,
+      "total": 4,
+      "civel": 3,
+      "trabalhista": 1,
       "tributario": 0
     },
     "profData": [
@@ -43,10 +43,10 @@
       {
         "name": "Beatriz Lourenço Berniz ",
         "cargo": "Advogado",
-        "total": 16,
+        "total": 20,
         "d0": 0,
-        "dm1": 0,
-        "dm2": 10,
+        "dm1": 2,
+        "dm2": 12,
         "dm3": 6,
         "dp": 0
       },
@@ -73,19 +73,19 @@
       {
         "name": "Danilo Henrique Silva",
         "cargo": "Estagiário",
-        "total": 17,
+        "total": 13,
         "d0": 2,
-        "dm1": 2,
-        "dm2": 11,
+        "dm1": 0,
+        "dm2": 9,
         "dm3": 2,
         "dp": 0
       },
       {
         "name": "Denis Ranieri",
         "cargo": "Advogado",
-        "total": 8,
+        "total": 9,
         "d0": 1,
-        "dm1": 0,
+        "dm1": 1,
         "dm2": 1,
         "dm3": 6,
         "dp": 0
@@ -163,9 +163,9 @@
       {
         "name": "Pedro Henrique Almeida Conceição",
         "cargo": "Estagiário",
-        "total": 62,
+        "total": 61,
         "d0": 16,
-        "dm1": 9,
+        "dm1": 8,
         "dm2": 20,
         "dm3": 17,
         "dp": 0
