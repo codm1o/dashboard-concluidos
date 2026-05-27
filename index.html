@@ -546,9 +546,16 @@ function buildDashboardHTML(d) {
     const dpBadge  = p.dp > 0
       ? `<span class="badge badge-dp">${p.dp}</span>`
       : `<span style="color:#ccc;font-size:11px">—</span>`;
-    const cargoBadge = p.cargo === 'Advogado'
-      ? `<span style="font-size:9px;color:#C9951A;background:#FEF3C7;padding:1px 6px;border-radius:10px">Adv</span>`
-      : `<span style="font-size:9px;color:#888;background:#F1EFE8;padding:1px 6px;border-radius:10px">Est</span>`;
+    let cargoBadge = '';
+    if (p.cargo === 'Advogado') {
+    cargoBadge = `<span style="font-size:9px;color:#C9951A;background:#FEF3C7;padding:1px 6px;border-radius:10px">Adv</span>`;
+    }
+    else if (p.cargo === 'Coordenador') {
+    cargoBadge = `<span style="font-size:9px;color:#155E75;background:#E0F2FE;padding:1px 6px;border-radius:10px">Coord</span>`;
+    }
+    else {
+    cargoBadge = `<span style="font-size:9px;color:#888;background:#F1EFE8;padding:1px 6px;border-radius:10px">Est</span>`;
+    }
     return `
       <tr>
         <td style="font-size:13px;width:24px">${i < 3 ? medals[i] : `<span style="color:#aaa;font-size:11px">${i+1}</span>`}</td>
