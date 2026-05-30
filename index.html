@@ -667,6 +667,12 @@
     return (part / total * 100).toFixed(1).replace('.', ',') + '%';
   }
 
+/* Filtro por área */
+function filtrarArea(lista, area) {
+  if (area === 'todas') return lista;
+  return lista.filter(p => p.area === area);
+}
+
   /* Destrói uma instância Chart.js existente (evita vazamento de memória) */
   function destroyChart(id) {
     if (charts[id]) { charts[id].destroy(); delete charts[id]; }
