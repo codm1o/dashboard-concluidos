@@ -723,7 +723,7 @@ function filtrarArea(lista, area) {
       const listaFiltrada = filtrarArea(d.profData, areaAtual);
 
       
-      // recalcula tudo baseado na área selecionada
+      // Recalcula tudo baseado na área selecionada
       const totalFiltrado = listaFiltrada.reduce((acc, p) => acc + p.total, 0);
 
       const d0Filtrado  = listaFiltrada.reduce((acc, p) => acc + p.d0, 0);
@@ -732,8 +732,26 @@ function filtrarArea(lista, area) {
       const dm3Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm3, 0);
       const dpFiltrado  = listaFiltrada.reduce((acc, p) => acc + p.dp, 0);
 
+      
+      // Total de prazos
       const prazosFiltrado = d0Filtrado + dm1Filtrado + dm2Filtrado + dm3Filtrado + dpFiltrado;
 
+
+      // TAREFAS
+      const tarefasFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.tarefas || 0), 0);
+
+      // PRAZOS TOTAL
+      const prazosTotalFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.prazos || 0), 0);
+
+      // TOTAL CONCLUÍDOS
+      const totalConcluidosFiltrado = tarefasFiltrado + prazosTotalFiltrado;
+
+      // D+
+      const dPlusFiltrado = dpFiltrado;
+
+      // SEM JUSTIFICATIVA
+      const semJustificativaFiltrado =
+        listaFiltrada.reduce((acc, p) => acc + (p.sem_justificativa || 0), 0);
 
       // Ranking geral
       const sortedAll = [...listaFiltrada].sort((a,b) => b.total - a.total);
@@ -809,34 +827,40 @@ function filtrarArea(lista, area) {
       <div class="kpi-grid">
         <div class="kpi gold">
           <div class="kpi-label">Total concluídos</div>
-          <div class="kpi-value">${fmt(d.totalConcluidos)}</div>
+          <div class="kpi-value">{fmt(totalConcluidosFiltrado)}</div>
           <div class="kpi-sub">tarefas, prazos e etapas</div>
         </div>
+
         <div class="kpi gray">
           <div class="kpi-label">Tarefas</div>
-          <div class="kpi-value">${fmt(d.tarefas)}</div>
-          <div class="kpi-sub"><b>${d.pctTarefas}</b> do total</div>
+          <div class="kpi-value">${fmt(tarefasFiltrado)}</div>
+          <div class="kpi-sub">
+              <b>${pct(tarefasFiltrado, totalConcluidosFiltrado)}</b> do total
         </div>
+
         <div class="kpi green">
           <div class="kpi-label">Prazos processuais</div>
-          <div class="kpi-value">${fmt(d.prazos)}</div>
-          <div class="kpi-sub success">${d.pctPrazo} cumpridos no prazo</div>
-        </div>
+          <div class="kpi-value">${fmt(prazosTotalFiltrado)}</div>
+          <div class="kpi-sub success">
+              ${pct(prazosTotalFiltrado - dPlusFiltrado, prazosTotalFiltrado)} cumpridos no prazo
+          </div>
+
         ${d.etapas > 0 ? `
         <div class="kpi amber">
           <div class="kpi-label">Etapas de prazo</div>
           <div class="kpi-value">${fmt(d.etapas)}</div>
           <div class="kpi-sub">${pct(d.etapas, d.totalConcluidos)} do total</div>
         </div>` : `
+
         <div class="kpi amber">
           <div class="kpi-label">Sem justificativa</div>
-          <div class="kpi-value" style="color:#B8860B">${d.sjAdv.total + d.sjEst.total}</div>
+          <div class="kpi-value" style="color:#B8860B">${semJustificativaFiltrado}</div>
           <div class="kpi-sub">D0/D-1 sem registro</div>
         </div>`}
         <div class="kpi red">
           <div class="kpi-label">Após data fatal (D+)</div>
-          <div class="kpi-value">${fmt(d.dPlus)}</div>
-          <div class="kpi-sub danger">${pct(d.dPlus, d.prazos)} dos prazos</div>
+          <div class="kpi-value">${dPlusFiltrado}</div>
+          <div class="kpi-sub danger">${pct(dPlusFiltrado, prazosTotalFiltrado)} dos prazos</div>
         </div>
       </div>
 
@@ -867,7 +891,7 @@ function filtrarArea(lista, area) {
           <div class="kpi-sm-val dm3c">${dm3Filtrado}</div>
           <div class="kpi-sm-pct">${pct(dm3Filtrado, prazosFiltrado)}</div>
         </div>
-        
+
         <div class="kpi-sm">
           <div class="kpi-sm-label">🔴 D+ (fatal)</div>
           <div class="kpi-sm-val dpc">${dpFiltrado}</div>
@@ -882,14 +906,28 @@ function filtrarArea(lista, area) {
         <div class="card">
           <div class="card-title">distribuição de prazos</div>
           <div class="legends">
-            <div class="legend-item"><div class="legend-dot" style="background:#C9951A"></div>D0 — ${d.d0}</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#9E7414"></div>D-1 — ${d.dm1}</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#E5C97A"></div>D-2 — ${d.dm2}</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#6B6B6B"></div>D-3+ — ${d.dm3}</div>
-            <div class="legend-item"><div class="legend-dot" style="background:#A32D2D"></div>D+ fatal — ${d.dp}</div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#C9951A"></div>
+              D0 — ${d0Filtrado}
+              </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#9E7414"></div>
+              D-1 — ${dm1Filtrado}
+              </div>
+            <div class="legend-item"><div class="legend-dot" style="background:#E5C97A"></div>D-2 — ${dm2Filtrado}</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#6B6B6B"></div>D-3+ — ${dm3Filtrado}</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#A32D2D"></div>D+ fatal — ${dpFiltrado}</div>
           </div>
           <div style="position:relative;width:100%;height:220px">
-            <canvas id="donutChart" role="img" aria-label="Donut chart mostrando distribuição de prazos por antecedência">Distribuição: D0=${d.d0}, D-1=${d.dm1}, D-2=${d.dm2}, D-3+=${d.dm3}, D+=${d.dp}</canvas>
+            
+          <canvas id="donutChart">
+          Distribuição: D0=${d0Filtrado}, 
+          D-1=${dm1Filtrado}, 
+          D-2=${dm2Filtrado}, 
+          D-3+=${dm3Filtrado}, 
+          D+=${dpFiltrado}
+          </canvas>
+
           </div>
         </div>
         <div class="card">
@@ -1051,10 +1089,14 @@ function filtrarArea(lista, area) {
       data: {
         labels: ['D0','D-1','D-2','D-3+','D+ Fatal'],
         datasets: [{
-          data: [d.d0, d.dm1, d.dm2, d.dm3, d.dp],
-          backgroundColor: ['#C9951A','#9E7414','#E5C97A','#6B6B6B','#A32D2D'],
-          borderWidth: 0,
-          hoverOffset: 6
+          data: [d0Filtrado, dm1Filtrado, dm2Filtrado, dm3Filtrado, dpFiltrado],
+          backgroundColor: ['#C9951A','#9E7414','#E5C97A','#6B6B6B','#A32D2D'],  
+          borderWidth: 1.5,
+          borderColor: '#fff'
+          hoverOffset: 16,
+          hoverBorderWidth: 3,
+          hoverBorderColor: '#000'
+
         }]
       },
       options: {
@@ -1063,20 +1105,36 @@ function filtrarArea(lista, area) {
         cutout: '62%',
         plugins: {
           legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: (c) => ` ${c.label}: ${c.raw} (${pct(c.raw, d.prazos)})`
-            }
+        tooltip: {
+        backgroundColor: '#1a1a1a',
+        titleColor: '#fff',
+        bodyColor: '#fff',
+        borderColor: '#444',
+        borderWidth: 1,
+        padding: 10,
+        displayColors: true,
+        callbacks: { 
+          label: (c) => {
+            const total = c.dataset.data.reduce((a,b)=>a+b,0);
+            const value = c.raw;
+            const pctVal = ((value / total)*100)
+              .toFixed(1)
+              .replace('.', ',');
+
+            return ` ${c.label}: ${value} (${pctVal}%)`;
           }
         }
       }
-    });
-  }
+    },
+        onHover: (e, elements) => {
+  e.native.target.style.cursor =
+    elements.length ? 'pointer' : 'default';
+}
 
   /* ── Barras horizontais: ranking total de concluídos ── */
   function renderRankingChart(d) {
     destroyChart('rank');
-    const top10 = [...d.profData].sort((a,b)=>b.total-a.total).slice(0,10);
+    const top10 = [...listaFiltrada].sort((a,b)=>b.total-a.total).slice(0,10);
     charts['rank'] = new Chart(document.getElementById('rankChart'), {
       type: 'bar',
       data: {
