@@ -686,6 +686,31 @@ function filtrarArea(lista, area) {
     const data = MONTHS_DATA[monthKey];
     const container = document.getElementById('main-content');
 
+    
+    const listaFiltrada = filtrarArea(data.profData, areaAtual);
+
+    const totalFiltrado = listaFiltrada.reduce((acc, p) => acc + p.total, 0);
+
+    const d0Filtrado  = listaFiltrada.reduce((acc, p) => acc + p.d0, 0);
+    const dm1Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm1, 0);
+    const dm2Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm2, 0);
+    const dm3Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm3, 0);
+    const dpFiltrado  = listaFiltrada.reduce((acc, p) => acc + p.dp, 0);
+
+    const prazosFiltrado = d0Filtrado + dm1Filtrado + dm2Filtrado + dm3Filtrado + dpFiltrado;
+
+    const tarefasFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.tarefas || 0), 0);
+
+    const prazosTotalFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.prazos || 0), 0);
+
+    const totalConcluidosFiltrado = tarefasFiltrado + prazosTotalFiltrado;
+
+    const dPlusFiltrado = dpFiltrado;
+
+    const semJustificativaFiltrado =
+      listaFiltrada.reduce((acc, p) => acc + (p.sem_justificativa || 0), 0);
+
+
     /* Atualiza label do cabeçalho */
     document.getElementById('header-month-label').textContent = data.label;
 
@@ -701,13 +726,41 @@ function filtrarArea(lista, area) {
     }
 
     /* ── Monta o HTML completo do dashboard ── */
-    container.innerHTML = buildDashboardHTML(data);
+    
+    container.innerHTML = buildDashboardHTML({
+      ...data,
+      listaFiltrada,
+      d0Filtrado,
+      dm1Filtrado,
+      dm2Filtrado,
+      dm3Filtrado,
+      dpFiltrado,
+      prazosTotalFiltrado,
+      dPlusFiltrado,
+      totalConcluidosFiltrado,
+      tarefasFiltrado,
+      semJustificativaFiltrado
+    });
+
 
     /* ── Inicializa todos os gráficos ── */
-    renderDonutChart(data);
-    renderRankingChart(data);
-    renderStackedChart(data);
-    renderPerfChart(data);
+    
+      renderDonutChart({
+        d0: d0Filtrado,
+        dm1: dm1Filtrado,
+        dm2: dm2Filtrado,
+        dm3: dm3Filtrado,
+        dp: dpFiltrado
+      });
+
+    renderRankingChart(listaFiltrada);
+    renderStackedChart(listaFiltrada);
+    
+    renderPerfChart({
+      prazos: prazosTotalFiltrado,
+      dp: dPlusFiltrado
+    });
+
     renderAreaChart(data);    // NEW: distribuição por área
   }
 
@@ -717,44 +770,8 @@ function filtrarArea(lista, area) {
     ═══════════════════════════════════════════════════════════════════════ */
   function buildDashboardHTML(d) {
 
-    /* ── Dados calculados ── */
-    
-      // Aplica filtro de área
-      const listaFiltrada = filtrarArea(d.profData, areaAtual);
-
-      
-      // Recalcula tudo baseado na área selecionada
-      const totalFiltrado = listaFiltrada.reduce((acc, p) => acc + p.total, 0);
-
-      const d0Filtrado  = listaFiltrada.reduce((acc, p) => acc + p.d0, 0);
-      const dm1Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm1, 0);
-      const dm2Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm2, 0);
-      const dm3Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm3, 0);
-      const dpFiltrado  = listaFiltrada.reduce((acc, p) => acc + p.dp, 0);
-
-      
-      // Total de prazos
-      const prazosFiltrado = d0Filtrado + dm1Filtrado + dm2Filtrado + dm3Filtrado + dpFiltrado;
-
-
-      // TAREFAS
-      const tarefasFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.tarefas || 0), 0);
-
-      // PRAZOS TOTAL
-      const prazosTotalFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.prazos || 0), 0);
-
-      // TOTAL CONCLUÍDOS
-      const totalConcluidosFiltrado = tarefasFiltrado + prazosTotalFiltrado;
-
-      // D+
-      const dPlusFiltrado = dpFiltrado;
-
-      // SEM JUSTIFICATIVA
-      const semJustificativaFiltrado =
-        listaFiltrada.reduce((acc, p) => acc + (p.sem_justificativa || 0), 0);
-
       // Ranking geral
-      const sortedAll = [...listaFiltrada].sort((a,b) => b.total - a.total);
+      const sortedAll = [...d.listaFiltrada].sort((a,b) => b.total - a.total);
 
       // Ranking de prazos
       const sortedPrazo = [...listaFiltrada]
@@ -827,7 +844,7 @@ function filtrarArea(lista, area) {
       <div class="kpi-grid">
         <div class="kpi gold">
           <div class="kpi-label">Total concluídos</div>
-          <div class="kpi-value">{fmt(totalConcluidosFiltrado)}</div>
+          <div class="kpi-value">${fmt(totalConcluidosFiltrado)}</div>
           <div class="kpi-sub">tarefas, prazos e etapas</div>
         </div>
 
@@ -1082,14 +1099,21 @@ function filtrarArea(lista, area) {
     ═══════════════════════════════════════════════════════════════════════ */
 
   /* ── Donut: distribuição de prazos D0/D-1/D-2/D-3+/D+ ── */
-  function renderDonutChart(d) {
+  function renderDonutChart(dadosFiltrados) {
     destroyChart('donut');
     charts['donut'] = new Chart(document.getElementById('donutChart'), {
       type: 'doughnut',
       data: {
         labels: ['D0','D-1','D-2','D-3+','D+ Fatal'],
-        datasets: [{
-          data: [d0Filtrado, dm1Filtrado, dm2Filtrado, dm3Filtrado, dpFiltrado],
+        datasets: [{          
+        data: [
+          dadosFiltrados.d0,
+          dadosFiltrados.dm1,
+          dadosFiltrados.dm2,
+          dadosFiltrados.dm3,
+          dadosFiltrados.dp
+        ],
+
           backgroundColor: ['#C9951A','#9E7414','#E5C97A','#6B6B6B','#A32D2D'],  
           borderWidth: 1.5,
           borderColor: '#fff',
@@ -1129,14 +1153,14 @@ function filtrarArea(lista, area) {
     elements.length ? 'pointer' : 'default';
         }
       }
-      
+
   });
 }
 
   /* ── Barras horizontais: ranking total de concluídos ── */
-  function renderRankingChart(d) {
+  function renderRankingChart(lista) {
     destroyChart('rank');
-    const top10 = [...listaFiltrada].sort((a,b)=>b.total-a.total).slice(0,10);
+    const top10 = [...lista].sort((a,b)=>b.total-a.total).slice(0,10);
     charts['rank'] = new Chart(document.getElementById('rankChart'), {
       type: 'bar',
       data: {
@@ -1167,9 +1191,9 @@ function filtrarArea(lista, area) {
   }
 
   /* ── Barras empilhadas: breakdown D0/D-1/D-2/D-3+/D+ por profissional ── */
-  function renderStackedChart(d) {
+  function renderStackedChart(lista) {
     destroyChart('stacked');
-    const sorted = [...d.profData]
+    const sorted = [...lista]
       .filter(p => (p.d0+p.dm1+p.dm2+p.dm3+p.dp) > 0)
       .sort((a,b) => (b.d0+b.dm1+b.dm2+b.dm3+b.dp) - (a.d0+a.dm1+a.dm2+a.dm3+a.dp));
 
@@ -1199,7 +1223,7 @@ function filtrarArea(lista, area) {
   }
 
   /* ── Barras duplas: prazos cumpridos vs. D+ por profissional ── */
-  function renderPerfChart(d) {
+  function renderPerfChart(lista) {
     destroyChart('perf');
     const sorted = [...d.profData].sort((a,b)=>b.total-a.total).filter(p=>p.total>0);
     charts['perf'] = new Chart(document.getElementById('perfChart'), {
