@@ -264,6 +264,7 @@
       {
         "name": "Annelise Cavalcante de Almeida",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 60,
         "d0": 5,
         "dm1": 1,
@@ -274,6 +275,7 @@
       {
         "name": "Beatriz Lourenço Berniz ",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 36,
         "d0": 0,
         "dm1": 3,
@@ -284,6 +286,7 @@
       {
         "name": "Carolina Caetano Amaral Santos",
         "cargo": "Estagiário",
+        "area": "Trabalhista",
         "total": 75,
         "d0": 27,
         "dm1": 13,
@@ -294,6 +297,7 @@
       {
         "name": "Claudy Malzone de Godoy Penteado",
         "cargo": "Advogado",
+        "area": "Tributário",
         "total": 31,
         "d0": 1,
         "dm1": 0,
@@ -304,6 +308,7 @@
       {
         "name": "Danilo Henrique Silva",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 7,
         "d0": 0,
         "dm1": 0,
@@ -314,6 +319,7 @@
       {
         "name": "Denis Ranieri",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 6,
         "d0": 0,
         "dm1": 0,
@@ -324,6 +330,7 @@
       {
         "name": "Eugenio Romita Filho",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 52,
         "d0": 11,
         "dm1": 21,
@@ -334,6 +341,7 @@
       {
         "name": "Fernanda Machado Melendez",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 11,
         "d0": 3,
         "dm1": 1,
@@ -344,6 +352,7 @@
       {
         "name": "Ingrid Toledo de Oliveira",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 34,
         "d0": 5,
         "dm1": 1,
@@ -354,6 +363,7 @@
       {
         "name": "João Lucas Silva Barbosa",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 86,
         "d0": 33,
         "dm1": 11,
@@ -364,6 +374,7 @@
       {
         "name": "Luiz Eduardo de Souza Neves Schemy",
         "cargo": "Coordenador",
+        "area": "Tributário",
         "total": 2,
         "d0": 2,
         "dm1": 0,
@@ -374,6 +385,7 @@
       {
         "name": "Nicoly Nascimento Jorge",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 20,
         "d0": 0,
         "dm1": 1,
@@ -384,6 +396,7 @@
       {
         "name": "Pedro Henrique Almeida Conceição",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 66,
         "d0": 13,
         "dm1": 4,
@@ -394,6 +407,7 @@
       {
         "name": "Rafael Manta de Brito",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 41,
         "d0": 8,
         "dm1": 2,
@@ -404,6 +418,7 @@
       {
         "name": "Ricardo Alexandre Politi",
         "cargo": "Coordenador",
+        "area": "Cível",
         "total": 6,
         "d0": 2,
         "dm1": 1,
@@ -414,6 +429,7 @@
       {
         "name": "Samuel Magalhães SIlva de Almeida",
         "cargo": "Estagiário",
+        "area": "Tributário",
         "total": 4,
         "d0": 0,
         "dm1": 0,
@@ -424,6 +440,7 @@
       {
         "name": "Victor Hugo Rocha Macedo",
         "cargo": "Advogado",
+        "area": "Tributário",
         "total": 31,
         "d0": 1,
         "dm1": 0,
