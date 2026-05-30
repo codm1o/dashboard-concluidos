@@ -722,6 +722,19 @@ function filtrarArea(lista, area) {
       // Aplica filtro de área
       const listaFiltrada = filtrarArea(d.profData, areaAtual);
 
+      
+      // recalcula tudo baseado na área selecionada
+      const totalFiltrado = listaFiltrada.reduce((acc, p) => acc + p.total, 0);
+
+      const d0Filtrado  = listaFiltrada.reduce((acc, p) => acc + p.d0, 0);
+      const dm1Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm1, 0);
+      const dm2Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm2, 0);
+      const dm3Filtrado = listaFiltrada.reduce((acc, p) => acc + p.dm3, 0);
+      const dpFiltrado  = listaFiltrada.reduce((acc, p) => acc + p.dp, 0);
+
+      const prazosFiltrado = d0Filtrado + dm1Filtrado + dm2Filtrado + dm3Filtrado + dpFiltrado;
+
+
       // Ranking geral
       const sortedAll = [...listaFiltrada].sort((a,b) => b.total - a.total);
 
@@ -833,28 +846,31 @@ function filtrarArea(lista, area) {
       <div class="kpi-mid">
         <div class="kpi-sm">
           <div class="kpi-sm-label">⚡ D0</div>
-          <div class="kpi-sm-val d0c">${d.d0}</div>
-          <div class="kpi-sm-pct">${pct(d.d0, d.prazos)}</div>
+          <div class="kpi-sm-val d0c">${d0Filtrado}</div>
+          <div class="kpi-sm-pct">${pct(d0Filtrado, prazosFiltrado)}</div>
         </div>
+        
         <div class="kpi-sm">
           <div class="kpi-sm-label">🟡 D-1</div>
-          <div class="kpi-sm-val dm1c">${d.dm1}</div>
-          <div class="kpi-sm-pct">${pct(d.dm1, d.prazos)}</div>
+          <div class="kpi-sm-val dm1c">${dm1Filtrado}</div>
+          <div class="kpi-sm-pct">${pct(dm1Filtrado, prazosFiltrado)}</div>
+  </div>
+
         </div>
         <div class="kpi-sm">
           <div class="kpi-sm-label">🟠 D-2</div>
-          <div class="kpi-sm-val dm2c">${d.dm2}</div>
-          <div class="kpi-sm-pct">${pct(d.dm2, d.prazos)}</div>
+          <div class="kpi-sm-val dm2c">${dm2Filtrado}</div>
+          <div class="kpi-sm-pct">${pct(dm2Filtrado, prazosFiltrado)}</div>
         </div>
         <div class="kpi-sm">
           <div class="kpi-sm-label">⚪ D-3 ou antes</div>
-          <div class="kpi-sm-val dm3c">${d.dm3}</div>
-          <div class="kpi-sm-pct">${pct(d.dm3, d.prazos)}</div>
+          <div class="kpi-sm-val dm3c">${dm3Filtrado}</div>
+          <div class="kpi-sm-pct">${pct(dm3Filtrado, prazosFiltrado)}</div>
         </div>
         <div class="kpi-sm">
           <div class="kpi-sm-label">🔴 D+ (fatal)</div>
-          <div class="kpi-sm-val dpc">${d.dp}</div>
-          <div class="kpi-sm-pct">${pct(d.dp, d.prazos)}</div>
+          <div class="kpi-sm-val dpc">${dpFiltrado}</div>
+          <div class="kpi-sm-pct">${pct(dpFiltrado, prazosFiltrado)}</div>
         </div>
       </div>
 
