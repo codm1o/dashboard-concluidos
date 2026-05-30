@@ -121,10 +121,7 @@
     font-weight: 500; 
   }
 
-  /* ════════════════════════════════════════════════════════════════
-    NEW: SELETOR DE MÊS — navegação entre relatórios mensais
-    Permite transitar entre Janeiro, Fevereiro, Março, Abril e Maio
-    ════════════════════════════════════════════════════════════════ */
+  /* Navegação de meses — troca entre relatórios */
   .month-nav {
     display: flex;
     align-items: center;
@@ -134,6 +131,8 @@
     padding: 12px 18px;
     flex-wrap: wrap;
   }
+
+  /* Label "Período" */
   .month-nav-label {
     font-size: 10px;
     color: #666;
@@ -143,6 +142,8 @@
     margin-right: 6px;
     white-space: nowrap;
   }
+
+  /* Botões dos meses */
   .month-tab {
     font-family: sans-serif;
     font-size: 12px;
@@ -156,6 +157,41 @@
     transition: all 0.2s;
     white-space: nowrap;
   }
+
+  
+/* Filtro global de área */
+.area-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-top: 6px;
+}
+
+.area-filter span {
+  font-size: 11px;
+  color: #888;
+  font-family: sans-serif;
+}
+
+.area-filter button {
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 14px;
+  border: 1px solid #444;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+}
+
+.area-filter button.active {
+  background: #C9951A;
+  color: #1a1a1a;
+  border-color: #C9951A;
+}
+
   /* Estado: mês ativo/selecionado */
   .month-tab.active {
     background: #C9951A;
@@ -163,17 +199,20 @@
     color: #1a1a1a;
     font-weight: 700;
   }
+
   /* Estado: hover em mês disponível */
   .month-tab:not(.unavailable):not(.active):hover {
     border-color: #C9951A;
     color: #C9951A;
   }
+
   /* Estado: mês sem base carregada ainda */
   .month-tab.unavailable {
     opacity: 0.4;
     cursor: not-allowed;
     border-style: dashed;
   }
+  
   .month-tab.upcoming {
     border-color: #444;
     color: #555;
@@ -187,14 +226,14 @@
     margin: 0 4px;
   }
 
-  /* ════════════════════════════════════════════════════════════════
-    KPI CARDS — linha principal de métricas
-    ════════════════════════════════════════════════════════════════ */
+ /* KPI cards — métricas principais do dashboard */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 10px;
   }
+
+  /* Card individual de KPI */
   .kpi {
     background: #fff;
     border: 0.5px solid rgba(0,0,0,0.1);
@@ -203,7 +242,8 @@
     position: relative;
     overflow: hidden;
   }
-  /* Borda lateral colorida por tipo de métrica */
+
+  /* KPI card — indicador lateral por tipo de métrica */
   .kpi::before {
     content: '';
     position: absolute;
@@ -211,40 +251,103 @@
     width: 4px; height: 100%;
     border-radius: 4px 0 0 4px;
   }
+
+  /* Cores por tipo de KPI */
   .kpi.gold::before   { background: #C9951A; }
   .kpi.gray::before   { background: #6B6B6B; }
   .kpi.green::before  { background: #3B6D11; }
   .kpi.red::before    { background: #A32D2D; }
   .kpi.amber::before  { background: #B8860B; }
-  .kpi-label { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-family: sans-serif; margin-bottom: 6px; }
-  .kpi-value { font-size: 28px; font-weight: 400; color: #1a1a1a; line-height: 1; }
-  .kpi-sub   { font-size: 11px; color: #888; margin-top: 5px; font-family: sans-serif; }
-  .kpi-sub b { color: #C9951A; }
-  .kpi-sub.danger { color: #A32D2D; font-weight: 600; }
-  .kpi-sub.success { color: #3B6D11; font-weight: 600; }
 
-  /* ════════════════════════════════════════════════════════════════
-    KPI MINI — linha secundária D0/D-1/D-2/D-3+/D+
-    ════════════════════════════════════════════════════════════════ */
+  /* Label do KPI */
+  .kpi-label { 
+    font-size: 10px; 
+    color: #888; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-family: sans-serif; 
+    margin-bottom: 6px; 
+  }
+
+  /* Valor principal do KPI */
+  .kpi-value { 
+    font-size: 28px; 
+    font-weight: 400; 
+    color: #1a1a1a; 
+    line-height: 1; 
+  }
+
+ /* Texto auxiliar abaixo do KPI */
+  .kpi-sub   { 
+    font-size: 11px; 
+    color: #888; 
+    margin-top: 5px; 
+    font-family: sans-serif; 
+  }
+
+   /* Destaque dentro do texto auxiliar */
+  .kpi-sub b { 
+    color: #C9951A; 
+  }
+
+  /* Estado: alerta (ex: atrasos) */
+  .kpi-sub.danger { 
+    color: #A32D2D; 
+    font-weight: 600; 
+  }
+
+  /* Estado: positivo (ex: dentro do prazo) */
+  .kpi-sub.success { 
+    color: #3B6D11; 
+    font-weight: 600; 
+  }
+
+  /* KPI mini — breakdown de prazos (D0 a D+) */
   .kpi-mid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 10px;
   }
+
+  /* Card individual (mini KPI) */
   .kpi-sm {
     background: #F1EFE8;
     border-radius: 8px;
     padding: 0.875rem 1rem;
     text-align: center;
   }
-  .kpi-sm-label { font-size: 10px; color: #888; font-family: sans-serif; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-  .kpi-sm-val   { font-size: 24px; font-weight: 500; font-family: sans-serif; }
-  .kpi-sm-pct   { font-size: 11px; font-family: sans-serif; color: #888; margin-top: 2px; }
-  .d0c  { color: #C9951A; }
-  .dm1c { color: #9E7414; }
-  .dm2c { color: #B8860B; }
-  .dm3c { color: #6B6B6B; }
-  .dpc  { color: #A32D2D; }
+
+  /* Label do mini KPI (ex: D0, D-1) */
+  .kpi-sm-label { 
+    font-size: 10px; 
+    color: #888; 
+    font-family: sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px; 
+    margin-bottom: 4px; 
+  }
+
+  /* Valor principal */
+  .kpi-sm-val   { 
+    font-size: 24px; 
+    font-weight: 500; 
+    font-family: sans-serif; 
+  }
+
+  /* Percentual abaixo do valor */
+  .kpi-sm-pct   { 
+    font-size: 11px; 
+    font-family: sans-serif; 
+    color: #888; 
+    margin-top: 2px; 
+  }
+
+  /* Cores por faixa de prazo */
+  .d0c  { color: #C9951A; } /* D0 — prazo no dia */
+  .dm1c { color: #9E7414; } /* D-1 */
+  .dm2c { color: #B8860B; } /* D-2 */
+  .dm3c { color: #6B6B6B; } /* D-3 ou antes */
+  .dpc  { color: #A32D2D; } /* D+ (após data fatal) */
 
   /* ════════════════════════════════════════════════════════════════
     CARDS GENÉRICOS
@@ -475,6 +578,17 @@
     <button class="month-tab upcoming"    data-month="maio"     title="Disponível ao fim de maio">Maio ·em breve</button>
   </div>
 
+  
+<!-- Filtro de área -->
+<div class="area-filter">
+  <span>Área:</span>
+  <button data-area="todas" class="active">Todas</button>
+  <button data-area="Cível">Cível</button>
+  <button data-area="Trabalhista">Trabalhista</button>
+  <button data-area="Tributário">Tributário</button>
+</div>
+
+
   <!-- ════════════════════════════════════════════════════
       CABEÇALHO — identidade visual do escritório
       A data é atualizada dinamicamente ao trocar de mês
@@ -520,6 +634,7 @@
     ═══════════════════════════════════════════════════════════════════════ */
   let MONTHS_DATA = {};
   let currentMonth = 'abril';
+  let areaAtual = 'todas';
   let charts = {};
 
   fetch("dados.json")
@@ -527,7 +642,7 @@
     .then(data => {
       MONTHS_DATA = data;
 
-      // ativa/desativa botões automaticamente
+      // Ativa/desativa botões automaticamente
       document.querySelectorAll('.month-tab').forEach(btn => {
         const mes = btn.dataset.month;
         if (MONTHS_DATA[mes]?.available) {
@@ -597,12 +712,18 @@
   function buildDashboardHTML(d) {
 
     /* ── Dados calculados ── */
-    const sortedAll   = [...d.profData].sort((a,b) => b.total - a.total);
-    const sortedPrazo = [...d.profData]
-      .filter(p => (p.d0+p.dm1+p.dm2+p.dm3+p.dp) > 0)
-      .sort((a,b) => (b.d0+b.dm1+b.dm2+b.dm3+b.dp) - (a.d0+a.dm1+a.dm2+a.dm3+a.dp));
+    
+      // Aplica filtro de área
+      const listaFiltrada = filtrarArea(d.profData, areaAtual);
 
-    const areaTotal = d.areaTrabalhista + d.areaCivel + d.areaTributario;
+      // Ranking geral
+      const sortedAll = [...listaFiltrada].sort((a,b) => b.total - a.total);
+
+      // Ranking de prazos
+      const sortedPrazo = [...listaFiltrada]
+        .filter(p => (p.d0+p.dm1+p.dm2+p.dm3+p.dp) > 0)
+        .sort((a,b) => (b.d0+b.dm1+b.dm2+b.dm3+b.dp) - (a.d0+a.dm1+a.dm2+a.dm3+a.dp));
+      const areaTotal = d.areaTrabalhista + d.areaCivel + d.areaTributario;
 
     /* ── Badges de sem justificativa ── */
     function sjBadge(total) {
@@ -1102,6 +1223,23 @@
       renderDashboard(monthKey);
     });
   });
+
+  
+/* ✅ Filtro de área */
+document.querySelectorAll('.area-filter button').forEach(btn => {
+  btn.addEventListener('click', () => {
+
+    areaAtual = btn.dataset.area;
+
+    // troca visual
+    document.querySelectorAll('.area-filter button')
+      .forEach(b => b.classList.remove('active'));
+
+    btn.classList.add('active');
+
+    renderDashboard(currentMonth);
+  });
+});
   </script>
 
   </body>
