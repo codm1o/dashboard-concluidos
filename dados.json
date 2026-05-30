@@ -3,19 +3,19 @@
     "label": "Abril 2026",
     "available": true,
     "totalConcluidos": 1903,
-    "tarefas": 1418,
-    "prazos": 415,
+    "tarefas": 1419,
+    "prazos": 414,
     "dPlus": 0,
     "etapas": 0,
-    "d0": 84,
+    "d0": 83,
     "dm1": 48,
     "dm2": 143,
     "dm3": 140,
     "dp": 0,
     "pctPrazo": "100,0%",
-    "pctTarefas": "74,5%",
+    "pctTarefas": "74,6%",
     "areaTrabalhista": 174,
-    "areaCivel": 198,
+    "areaCivel": 197,
     "areaTributario": 43,
     "sjAdv": {
       "total": 1,
@@ -33,8 +33,9 @@
       {
         "name": "Annelise Cavalcante de Almeida",
         "cargo": "Advogado",
-        "total": 43,
-        "d0": 4,
+        "area": "Cível",
+        "total": 42,
+        "d0": 3,
         "dm1": 0,
         "dm2": 4,
         "dm3": 35,
@@ -43,6 +44,7 @@
       {
         "name": "Beatriz Lourenço Berniz ",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 20,
         "d0": 0,
         "dm1": 2,
@@ -53,6 +55,7 @@
       {
         "name": "Carolina Caetano Amaral Santos",
         "cargo": "Estagiário",
+        "area": "Trabalhista",
         "total": 49,
         "d0": 14,
         "dm1": 11,
@@ -63,6 +66,7 @@
       {
         "name": "Claudy Malzone de Godoy Penteado",
         "cargo": "Advogado",
+        "area": "Tributário",
         "total": 19,
         "d0": 0,
         "dm1": 0,
@@ -73,6 +77,7 @@
       {
         "name": "Danilo Henrique Silva",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 13,
         "d0": 2,
         "dm1": 0,
@@ -83,6 +88,7 @@
       {
         "name": "Denis Ranieri",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 9,
         "d0": 1,
         "dm1": 1,
@@ -93,6 +99,7 @@
       {
         "name": "Eugenio Romita Filho",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 33,
         "d0": 12,
         "dm1": 4,
@@ -103,6 +110,7 @@
       {
         "name": "Fernanda Machado Melendez",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 16,
         "d0": 1,
         "dm1": 0,
@@ -113,6 +121,7 @@
       {
         "name": "Gabriel Henrique Santoro ",
         "cargo": "Coordenador",
+        "area": "Trabalhista",
         "total": 1,
         "d0": 0,
         "dm1": 0,
@@ -123,6 +132,7 @@
       {
         "name": "Ingrid Toledo de Oliveira",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 15,
         "d0": 3,
         "dm1": 1,
@@ -133,6 +143,7 @@
       {
         "name": "João Lucas Silva Barbosa",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 64,
         "d0": 26,
         "dm1": 15,
@@ -143,6 +154,7 @@
       {
         "name": "Luiz Eduardo de Souza Neves Schemy",
         "cargo": "Coordenador",
+        "area": "Tributário",
         "total": 1,
         "d0": 1,
         "dm1": 0,
@@ -153,6 +165,7 @@
       {
         "name": "Nicoly Nascimento Jorge",
         "cargo": "Advogado",
+        "area": "Cível",
         "total": 16,
         "d0": 2,
         "dm1": 0,
@@ -163,6 +176,7 @@
       {
         "name": "Pedro Henrique Almeida Conceição",
         "cargo": "Estagiário",
+        "area": "Cível",
         "total": 61,
         "d0": 16,
         "dm1": 8,
@@ -173,6 +187,7 @@
       {
         "name": "Rafael Manta de Brito",
         "cargo": "Advogado",
+        "area": "Trabalhista",
         "total": 27,
         "d0": 2,
         "dm1": 6,
@@ -183,6 +198,7 @@
       {
         "name": "Ricardo Alexandre Politi",
         "cargo": "Coordenador",
+        "area": "Cível",
         "total": 5,
         "d0": 0,
         "dm1": 0,
@@ -193,6 +209,7 @@
       {
         "name": "Samuel Magalhães SIlva de Almeida",
         "cargo": "Estagiário",
+        "area": "Tributário",
         "total": 6,
         "d0": 0,
         "dm1": 0,
@@ -203,6 +220,7 @@
       {
         "name": "Victor Hugo Rocha Macedo",
         "cargo": "Advogado",
+        "area": "Tributário",
         "total": 17,
         "d0": 0,
         "dm1": 0,
