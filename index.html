@@ -1092,11 +1092,10 @@ function filtrarArea(lista, area) {
           data: [d0Filtrado, dm1Filtrado, dm2Filtrado, dm3Filtrado, dpFiltrado],
           backgroundColor: ['#C9951A','#9E7414','#E5C97A','#6B6B6B','#A32D2D'],  
           borderWidth: 1.5,
-          borderColor: '#fff'
+          borderColor: '#fff',
           hoverOffset: 16,
           hoverBorderWidth: 3,
           hoverBorderColor: '#000'
-
         }]
       },
       options: {
@@ -1104,7 +1103,7 @@ function filtrarArea(lista, area) {
         maintainAspectRatio: false,
         cutout: '62%',
         plugins: {
-          legend: { display: false },
+        legend: { display: false },
         tooltip: {
         backgroundColor: '#1a1a1a',
         titleColor: '#fff',
@@ -1120,15 +1119,18 @@ function filtrarArea(lista, area) {
             const pctVal = ((value / total)*100)
               .toFixed(1)
               .replace('.', ',');
-
             return ` ${c.label}: ${value} (${pctVal}%)`;
           }
         }
       }
-    },
+     },
         onHover: (e, elements) => {
   e.native.target.style.cursor =
     elements.length ? 'pointer' : 'default';
+        }
+      }
+      
+  });
 }
 
   /* ── Barras horizontais: ranking total de concluídos ── */
