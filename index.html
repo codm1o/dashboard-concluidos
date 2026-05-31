@@ -708,6 +708,8 @@
     const data = MONTHS_DATA[monthKey];
     if (!data) return;
 
+    console.log(MONTHS_DATA[currentMonth]);
+
     const container = document.getElementById('main-content');
 
     /* Atualiza label do período no cabeçalho */
@@ -740,28 +742,20 @@
     /* Prazos processuais: sempre somados do profData (têm distribuição individual) */
     const prazosTotalFiltrado = listaFiltrada.reduce((acc, p) => acc + (p.prazos || 0), 0);
 
-    /* Tarefas e total concluídos:
-       O profData não distribui tarefas por profissional (todos têm tarefas=0 no JSON).
-       Solução: quando filtro = "todas", usa os valores do nível raiz do JSON que são
-       os dados completos e corretos. Quando filtrado por área, as tarefas são estimadas
-       proporcionalmente ao peso de prazos daquela área sobre o total de prazos — já que
-       não há outra referência de distribuição no JSON atual.
-       IDEAL FUTURO: distribuir tarefas por profissional/área no JSON para exatidão. */
-    let tarefasFiltrado;
-    let totalConcluidosFiltrado;
+    
+/* ── Tarefas e total concluídos ──
+   🔥 Versão corrigida:
+   - não depende mais de data.tarefas ou data.totalConcluidos
+   - não usa estimativa proporcional (que gera erro)
+   - calcula direto da fonte confiável: listaFiltrada
+*/
 
-    if (areaAtual === 'todas') {
-      /* Caso simples: usa exatamente os valores do JSON raiz */
-      tarefasFiltrado           = data.tarefas || 0;
-      totalConcluidosFiltrado   = data.totalConcluidos || 0;
-    } else {
-      /* Estimativa proporcional para filtros de área:
-         proporção = prazos da área / total de prazos do mês */
-      const totalPrazosGeral = data.prazos || 1; // evita divisão por zero
-      const proporcao        = prazosTotalFiltrado / totalPrazosGeral;
-      tarefasFiltrado         = Math.round((data.tarefas || 0) * proporcao);
-      totalConcluidosFiltrado = tarefasFiltrado + prazosTotalFiltrado;
-    }
+const tarefasFiltrado =
+  listaFiltrada.reduce((acc, p) => acc + (p.tarefas || 0), 0);
+
+const totalConcluidosFiltrado =
+  tarefasFiltrado + prazosTotalFiltrado;
+
 
     /* Soma de D0/D-1 sem justificativa registrada */
     const semJustificativaFiltrado =
